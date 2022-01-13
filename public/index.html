@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gerador de Gifs de Cronômetro</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <!-- Color Picker -->
+    <script src="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2/dist/spectrum.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2/dist/spectrum.min.css">
+
+    <!-- Date Picker and Time Picker -->
+    <script src="https://www.jonthornton.com/Datepair.js/dist/datepair.js"></script>
+    <script src="//jonthornton.github.io/jquery-timepicker/jquery.timepicker.js"></script>
+    <script src="https://www.jonthornton.com/jquery-timepicker/documentation-assets/bootstrap-datepicker.js"></script>
+    <link rel="stylesheet" href="//jonthornton.github.io/jquery-timepicker/jquery.timepicker.css">
+
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="/css/link-generator-page.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>
+                Gerador de Gifs de Cronômetro
+
+                <!-- Button trigger modal -->
+                <button type="button" id="help-button" class="btn btn-primary" data-toggle="modal" data-target="#helpModal">
+                    ?
+                </button>
+            </h1>
+
+            <!-- Help Modal -->
+            <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="helpModalLabel">
+                                <b>Ajuda</b>
+                            </h5>
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <b>Data:</b><span> Data do final da contagem.</span>
+                            <br>
+                            <b>Horário:</b><span> Horário do final da contagem.</span>
+                            <br>
+                            <b>Largura:</b><span> Largura do GIF gerado.</span>
+                            <br>
+                            <b>Altura:</b><span> Altura do GIF gerado.</span>
+                            <br>
+                            <b>Qtd. de Frames:</b><span> Quantidade de segundos até o GIF reiniciar. Quanto menor, menor o tamanho da imagem gerada.</span>
+                            <br>
+                            <b>Tamanho da Fonte:</b><span> Tamanho das letras do cronômetro.</span>
+                            <br>
+                            <b>Cor da Fonte:</b><span> Cor do texto.</span>
+                            <br>
+                            <b>Cor do Background:</b><span> Cor do fundo do GIF gerado.</span>
+                            <br>
+                            <b>Fonte:</b><span> Família da fonte do texto do GIF.</span>
+                            <br>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Entendi!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <form action="/" class="col-6" method="post" id="main-form">
+                <div class="form-group row d-flex justify-content-start">
+                    <div class="col-6">
+                        <label for="date">Data</label>
+                        <input type="date" class="form-control" id="date" name="date">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="hour">Horário</label>
+                        <input type="text" id="hour" class="form-control time start" name="hour" />
+                    </div>
+                </div>
+
+                <div class="form-group row d-flex justify-content-start">
+                    <div class="col-6">
+                        <label for="width">Largura</label>
+                        <input value="250" type="number" class="form-control" id="width" name="width">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="height">Altura</label>
+                        <input value="80" type="number" class="form-control" id="height" name="height">
+                    </div>
+                </div>
+
+                <div class="form-group row d-flex justify-content-start">
+                    <div class="col-6">
+                        <label for="height">Qtd. de Frames</label>
+                        <input value="600" id='frames' name="frames" class="form-control" />
+                    </div>
+
+                    <div class="col-6">
+                        <label for="font-size">Tamanho da Fonte</label>
+                        <input value="25" type="number" class="form-control" id="font-size" name="fontSize">
+                    </div>
+                </div>
+
+                <div class="form-group row d-flex justify-content-start">
+                    <div class="col-6">
+                        <label for="height">Cor da Fonte</label>
+                        <input id='font-color-picker' name="color" class="form-control" />
+                    </div>
+
+                    <div class="col-6">
+                        <label for="height">Cor de Fundo</label>
+                        <input id='background-color-picker' name="bg" class="form-control" />
+                    </div>
+
+                </div>
+
+                <div class="form-group row d-flex justify-content-start">
+                    <div class="col-6">
+                        <label for="font-family">Fonte</label>
+                        <select class="form-control" id="font-family" name="fontFamily">
+                            <option value="Arial">Arial</option>
+                        </select>
+                    </div>
+
+                    <div class="col-6" id="font-family-buttons-wrapper">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newFontModal">
+                            Nova Fonte
+                        </button>
+
+                        <button type="button" class="btn btn-danger" onclick="openDeleteFontModal()">
+                            X
+                        </button>
+
+                        <!-- Create Font Modal -->
+                        <div class="modal fade" id="newFontModal" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="newFontModalLabel">Cadastrar Fonte</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="col-12">
+                                            <input type="file" id="new-font-file" accept=".ttf,.odf">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" onclick="newFont()">Enviar
+                                            Fonte</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Delete Font Modal -->
+                        <div class="modal fade" id="deleteFontModal" tabindex="-1" role="dialog"
+                            aria-labelledby="deleteFontModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteFontModalLabel">Deletar Fonte</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>A operação não pode ser revertida!</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" onclick="deleteFont()">
+                                            Deletar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row no-gutters d-flex justify-content-end">
+                    <button type="submit" name="submit-button" class="btn btn-primary">Gerar Link</button>
+                </div>
+            </form>
+
+            <hr>
+
+            <div class="col-6" id="preview" style="display: none">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                        <h1>Preview</h1>
+                    </div>
+
+                    <div class="col-12 d-flex justify-content-center">
+                        <img src="/" alt="Countdown Gif" id="generated-image" />
+                    </div>
+
+                    <div id="preview-buttons" class="col-12 d-flex justify-content-evenly">
+                        <!-- <a href="/" target="_blank" id="generated-link">Link</a> -->
+                        <button id="open-link-button" type="button" class="btn btn-primary">
+                            Abrir Link
+                        </button>
+
+                        <button id="copy-link-button" type="button" class="btn btn-primary">
+                            Copiar Link
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/link-generator-page.js"></script>
+</body>
+
+</html>
