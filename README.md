@@ -8,7 +8,7 @@ This app has been cloned and extended from this repository: https://github.com/r
 - Added font size and font family to parameters
 
 # Preview
-<img width="750" height="500" src="https://github.com/CaioAFA/nodejs-countdown-gif-generator/blob/master/app-preview.png?raw=true">
+<img width="750" height="500" src="https://github.com/CaioAFA/node-countdown-gif-generator/blob/master/app-preview.png?raw=true">
 
 # Instalation
 ```bash
@@ -18,7 +18,7 @@ npm install
 # Execute the app
 node app.js
 
-# Acess http://localhost:3000/
+# Access http://localhost:3000/
 ```
 
 # Requisites
@@ -29,4 +29,4 @@ This project extended function was tested and developed using these versions:
             
 ## License
 
-[MIT](LICENSE) & [GNU GENERAL PUBLIC LICENSE 3.0](LICENSE.md)
+MIT & GNU GENERAL PUBLIC LICENSE 3.0
