@@ -83,6 +83,7 @@ app.get('/fonts', function (req, res) {
 
     fs.readdir(fontsFolder, (err, files) => {
         files = files.map(f => f.replace('.ttf', ''))
+        files = files.filter(f => f != '.gitkeep')
         res.json(files)
     });
 })
