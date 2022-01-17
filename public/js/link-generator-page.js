@@ -79,9 +79,17 @@ $('#main-form').submit((e) => {
   $('#preview').show()
 
   $('#open-link-button').click(() => window.open(url))
-  $('#copy-link-button').click(() => {
-    navigator.clipboard.writeText(url)
-  })
+
+  if(navigator.clipboard){
+    $('#copy-link-button').show()
+
+    $('#copy-link-button').click(() => {
+      navigator.clipboard.writeText(url)
+    })
+  }
+  else {
+    $('#copy-link-button').hide()
+  }
 
   e.preventDefault()
 })
