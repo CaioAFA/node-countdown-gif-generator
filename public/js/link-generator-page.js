@@ -48,6 +48,8 @@ $('#hour').val('09:00 AM')
 
 // Handle submit
 $('#main-form').submit((e) => {
+  e.preventDefault()
+
   const rawData = $('#main-form').serializeArray()
 
   // Convert from array to JSON
@@ -90,8 +92,6 @@ $('#main-form').submit((e) => {
   else {
     $('#copy-link-button').hide()
   }
-
-  e.preventDefault()
 })
 
 const newFont = () => {
