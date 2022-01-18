@@ -66,8 +66,9 @@ $('#main-form').submit((e) => {
   delete data['date']
   delete data['hour']
 
-  data['bg'] = data['bg'].replaceAll('#', '')
-  data['color'] = data['color'].replaceAll('#', '')
+  // Get only digits from the String
+  data['bg'] = data['bg'].replace(/\D/g, "");
+  data['color'] = data['color'].replace(/\D/g, "");
 
   data['name'] = 'generatedGif'
 
