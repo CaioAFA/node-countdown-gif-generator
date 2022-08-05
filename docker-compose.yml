@@ -1,0 +1,13 @@
+version: '2'
+services:
+  node-app:
+    build: ./docker
+    volumes:
+      - ./:/app
+      - ./docker/app/entrypoint.sh:/entrypoint.sh
+    working_dir: /app
+    command: ['sh', '/entrypoint.sh']
+    ports:
+      - 3010:3010
+    environment:
+      - PORT=3010
