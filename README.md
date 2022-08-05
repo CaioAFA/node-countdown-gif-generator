@@ -18,7 +18,16 @@ npm install
 # Execute the app
 node app.js
 
-# Access http://localhost:3000/
+# Access http://localhost:3010/
+```
+
+# Instalation - Docker
+```bash
+# Execute the container
+docker-compose up -d # Remove -d for debug
+
+# Stop the container
+docker-compose down
 ```
 
 # Requisites
