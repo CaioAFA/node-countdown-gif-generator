@@ -31,6 +31,8 @@ docker-compose up -d # Remove -d for debug
 
 # Stop the container dettached from terminal
 docker-compose down
+
+# Access http://localhost:3010/
 ```
 
 # Requisites
