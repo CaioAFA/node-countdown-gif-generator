@@ -10,7 +10,7 @@ This app has been cloned and extended from this repository: https://github.com/r
 # Preview
 <img width="750" height="500" src="https://github.com/CaioAFA/node-countdown-gif-generator/blob/master/app-preview.png?raw=true">
 
-# Instalation
+# Executing the project
 ```bash
 # Install dependencies
 npm install
@@ -21,12 +21,15 @@ node app.js
 # Access http://localhost:3010/
 ```
 
-# Instalation - Docker
+# Executing the project - Docker
 ```bash
-# Execute the container
+# Running attached in terminal
+npm run start-docker
+
+# Running dettached from terminal
 docker-compose up -d # Remove -d for debug
 
-# Stop the container
+# Stop the container dettached from terminal
 docker-compose down
 ```
 
