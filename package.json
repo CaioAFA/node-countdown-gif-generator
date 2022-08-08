@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "start-docker": "docker-compose up"
+    "start-docker": "docker-compose up --build"
   },
   "author": "Saurabh Kashyap",
   "license": "MIT",
